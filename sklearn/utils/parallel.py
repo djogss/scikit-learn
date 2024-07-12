@@ -6,7 +6,7 @@ import functools
 import warnings
 from functools import update_wrapper
 
-import joblib
+# import joblib
 from threadpoolctl import ThreadpoolController
 
 from .._config import config_context, get_config
@@ -35,7 +35,7 @@ def _with_config(delayed_func, config):
         return delayed_func
 
 
-class Parallel(joblib.Parallel):
+class Parallel():
     """Tweak of :class:`joblib.Parallel` that propagates the scikit-learn configuration.
 
     This subclass of :class:`joblib.Parallel` ensures that the active configuration

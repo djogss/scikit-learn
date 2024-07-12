@@ -9,7 +9,7 @@ from functools import partial
 from numbers import Integral, Real
 
 import numpy as np
-from joblib import effective_n_jobs
+# from joblib import effective_n_jobs
 from scipy.sparse import csr_matrix, issparse
 from scipy.spatial import distance
 
@@ -49,6 +49,8 @@ from ..utils.validation import _num_samples, check_non_negative
 from ._pairwise_distances_reduction import ArgKmin
 from ._pairwise_fast import _chi2_kernel_fast, _sparse_manhattan
 
+def effective_n_jobs(n_job):
+    return 1
 
 # Utility Functions
 def _return_float_dtype(X, Y):

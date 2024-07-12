@@ -1,5 +1,4 @@
 import os
-from joblib import cpu_count
 
 
 # Module level cache for cpu_count as we do not expect this to change during
@@ -65,8 +64,7 @@ cpdef _openmp_effective_n_threads(n_threads=None, only_physical_cores=True):
         try:
             n_cpus = _CPU_COUNTS[only_physical_cores]
         except KeyError:
-            n_cpus = cpu_count(only_physical_cores=only_physical_cores)
-            _CPU_COUNTS[only_physical_cores] = n_cpus
+            _CPU_COUNTS[only_physical_cores] = 1
         max_n_threads = min(omp_get_max_threads(), n_cpus)
 
     if n_threads is None:

@@ -18,7 +18,6 @@ from traceback import format_exc
 
 import numpy as np
 import scipy.sparse as sp
-from joblib import logger
 
 from ..base import clone, is_classifier
 from ..exceptions import FitFailedWarning, UnsetMetadataPassedError

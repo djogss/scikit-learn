@@ -7,7 +7,7 @@ from collections.abc import Sequence
 import numpy as np
 
 from ..exceptions import DataConversionWarning
-from . import _joblib, metadata_routing
+from . import metadata_routing
 from ._bunch import Bunch
 from ._chunking import gen_batches, gen_even_slices
 from ._estimator_html_repr import estimator_html_repr
@@ -41,14 +41,17 @@ from .validation import (
     indexable,
 )
 
+def no_joblib_library():
+    pass
+
 # TODO(1.7): remove parallel_backend and register_parallel_backend
 msg = "deprecated in 1.5 to be removed in 1.7. Use joblib.{} instead."
-register_parallel_backend = deprecated(msg)(_joblib.register_parallel_backend)
+register_parallel_backend = deprecated(msg)(no_joblib_library)
 
 
 # if a class, deprecated will change the object in _joblib module so we need to subclass
 @deprecated(msg)
-class parallel_backend(_joblib.parallel_backend):
+class parallel_backend():
     pass
 
 

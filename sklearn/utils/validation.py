@@ -11,7 +11,7 @@ from contextlib import suppress
 from functools import reduce, wraps
 from inspect import Parameter, isclass, signature
 
-import joblib
+# import joblib
 import numpy as np
 import scipy.sparse as sp
 
@@ -416,14 +416,14 @@ def check_memory(memory):
     >>> check_memory("caching_dir")
     Memory(location=caching_dir/joblib)
     """
-    if memory is None or isinstance(memory, str):
-        memory = joblib.Memory(location=memory, verbose=0)
-    elif not hasattr(memory, "cache"):
-        raise ValueError(
-            "'memory' should be None, a string or have the same"
-            " interface as joblib.Memory."
-            " Got memory='{}' instead.".format(memory)
-        )
+#     if memory is None or isinstance(memory, str):
+#         memory = joblib.Memory(location=memory, verbose=0)
+#     elif not hasattr(memory, "cache"):
+#         raise ValueError(
+#             "'memory' should be None, a string or have the same"
+#             " interface as joblib.Memory."
+#             " Got memory='{}' instead.".format(memory)
+#         )
     return memory
 
 
